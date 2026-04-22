@@ -32,7 +32,7 @@ body {
     position: fixed;
     width: 120%;
     height: 120%;
-    background: url("1st/画像/ナースステーション.jpeg") no-repeat center center / cover;
+    background: url("画像/ナースステーション.jpeg") no-repeat center center / cover;
     z-index: 1;
 }
 
