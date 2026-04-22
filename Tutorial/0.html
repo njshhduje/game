@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Tutorial</title>
+  <link rel="stylesheet" href="0.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+  <link rel="icon" href="アイコン.png">
+</head>
+<body>
 
+  <!-- 背景 -->
+  <div class="bg"></div>
+  <div class="black"></div>
+  <div class="noise"></div>
+
+
+<!-- 光る丸 -->
+  <div id="light"></div>
+
+<!-- 画像表示用 -->
+<div id="viewer">
+  <div class="overlay"></div>
+  <img id="viewImage1" src="画像/ITEM 生徒証.png">
+  <img id="viewImage2" src="画像/生徒証（ゆい）.png">
+  <button id="closeBtn">×</button>
+</div>
+
+<div id="startScreen">
+  <img src="画像/屋上最初.png">
+  <div id="startFade"></div>
+</div>
+  <!-- UI -->
+  <div class="ui">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <img id="testid" src="画像/0.png">
+  <br>
+  <br>
+    <div class="input-area">
+      <input type="text" id="textBox" readonly>
+    </div>
+
+    <div class="controls">
+      <button id="deleteBtn">削除</button>
+      <button id="enterBtn">決定</button>
+    </div>
+
+    <div class="keyboard" id="keyboard"></div>
+	 <br>
+  </div>
+  <script src="0.js"></script>
+<!-- 光る丸 -->
+
+</body>
+</html>

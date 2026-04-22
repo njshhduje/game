@@ -1,0 +1,310 @@
+/* ===== 全体リセット ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto;
+  opacity: 1;
+  transition: opacity 3s ease;
+  background: black;
+
+  /* 明朝フォント（確実版） */
+  font-family: "Yu Mincho", "游明朝", "MS Mincho", serif;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+/* 黒フェード用 */
+.fade-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+
+  transition: opacity 0.8s ease;
+}
+
+/* フェード発動 */
+.fade-layer.active {
+  opacity: 1;
+}
+/* inputとbuttonにも強制適用 */
+input, button {
+  font-family: "Yu Mincho", "游明朝", "MS Mincho", serif;
+}
+
+/* ===== 背景 ===== */
+.bg {
+  position: fixed;
+  width: 120%;
+  height: 120%;
+  background: url("画像/屋上 背景.jpg") no-repeat center;
+  background-size: cover;
+  z-index: 1;
+}
+
+.black {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.noise {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url("../Noise.gif");
+  opacity: 0.15;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ===== UI全体 ===== */
+.ui {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 90%;
+  text-align: center;
+}
+
+#testid {
+   width: 450px;
+	height: auto;
+}
+
+/* ===== 入力欄 ===== */
+#textBox {
+  width: 20%;
+  padding: 12px;
+  font-size: 24px;
+  text-align: center;
+
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: 2px solid white;
+
+  /* 編集・選択禁止 */
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ===== コントロールボタン ===== */
+.controls {
+  margin-top: 15px;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+
+  background: rgba(0,0,0,0.8);
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: white;
+  color: black;
+}
+
+/* ===== キーボード（Grid） ===== */
+.keyboard {
+  margin-top: 15px;
+
+  display: grid;
+  grid-template-columns: repeat(10, 45px); /* ← 横最大数 */
+  gap: 8px;
+  justify-content: center;
+}
+
+/* ===== キー ===== */
+.key {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: white;
+
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+/* ホバー */
+.key:hover {
+  background: black;
+  color: white;
+}
+
+/* 押した感 */
+.key:active {
+  transform: scale(0.9);
+}
+
+/* 光る丸 */
+/* 中心やや強め＋外側弱い光 */
+/* かなり淡い光 */
+#light {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,0.6) 40%,
+    rgba(255,255,255,0.3) 70%,
+    rgba(255,255,255,0) 100%
+  );
+
+  filter: blur(4px); /* ← ぼやけ強め */
+  z-index: 20;
+  top: 500px;
+  left: 660px;
+  animation: lightPulse 7s ease-in-out infinite;
+  pointer-events: auto;
+}
+/* なめらかな点滅 */
+
+
+
+@keyframes lightPulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7; /* ← 弱く */
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 画像表示エリア */
+#viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: none; /* ← これだけで制御 */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  z-index: 999;
+}
+/* 黒フェード */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+}
+
+/* 画像 */
+#viewImage1 {
+  max-width: 50%;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s, transform 0.6s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#viewImage2 {
+  max-width: 50%;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s, transform 0.6s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* バツボタン */
+#closeBtn {
+  margin-top: 20px;
+  font-size: 24px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#viewer.active {
+  pointer-events: auto;
+}
+
+#viewer:not(.active) {
+  pointer-events: none;
+}
+
+#startScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: black;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.ui {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+.ui.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#startScreen img {
+  max-width: 50%;
+  pointer-events: none;
+}
+
+/* フェード用黒レイヤー */
+#startFade {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none !important;
+  z-index: 1;
+}
+
+/*此処から先ついか*/
+
