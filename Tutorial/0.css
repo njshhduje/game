@@ -80,8 +80,8 @@ input, button {
 }
 
 #testid {
-　　width: 100vw;
-    height: 100vw;
+　　width: 120vw;
+    height: 120vw;
 	 object-fit: contain;
 }
 
