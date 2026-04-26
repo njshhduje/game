@@ -1,0 +1,102 @@
+/* ===== スタート画面 ===== */
+#start-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.start-img {
+  max-width: 60%;
+}
+
+/* ===== 光ルート（最初は非表示） ===== */
+.hikari-root {
+  position: absolute;
+  inset: 0;
+  z-index: 9997;
+
+  pointer-events: none;
+
+  opacity: 1; /* ←重要 */
+  transition: opacity 1s ease;
+}
+
+/* ===== 光 ===== */
+.hikari-light {
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  pointer-events: auto;
+  cursor: pointer;
+　z-index: 9997;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.3) 0%,
+    rgba(255,255,255,0.2) 40%,
+    rgba(255,255,255,0.1) 70%,
+    rgba(255,255,255,0) 100%
+  );
+
+  filter: blur(3px);
+
+  animation: hikari-blink 5s ease-in-out infinite;
+}
+
+/* 点滅 */
+@keyframes hikari-blink {
+  0% { opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+/* ===== viewer（画像表示） ===== */
+.hikari-viewer {
+  position: fixed;
+  inset: 0;
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  z-index: 99999999;
+}
+
+/* 黒背景 */
+.hikari-black {
+  position: absolute;
+  inset: 0;
+  background: black;
+  opacity: 0;
+}
+
+/* 画像 */
+.hikari-img1,
+.hikari-img2 {
+  max-width: 50%;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+/* 閉じる */
+.hikari-close {
+  margin-top: 20px;
+  font-size: 24px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
