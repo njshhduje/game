@@ -3,68 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <title>1st stage</title>
+
+<link rel="stylesheet" href="../all.css">
 <link rel="stylesheet" href="1.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- 背景レイヤー -->
+<!-- ===== 背景 ===== -->
 <div class="bg-image"></div>
 <div class="overlay"></div>
 <div class="gif-layer"></div>
 
 <div id="fade"></div>
 
-<!-- スタート画面 -->
+<!-- ===== スタート画面 ===== -->
 <div id="start-screen">
     <img src="画像/ナースステーション最初.png" class="start-img">
 </div>
 
-<!-- 本画面 -->
+<!-- ===== メイン画面 ===== -->
 <div id="main-screen">
 
-    <!-- 今までのやつ全部ここに入れる -->
-    <div class="bg-image"></div>
-    <div class="overlay"></div>
-    <div class="gif-layer"></div>
-
+    <!-- UI -->
     <div class="container">
-        <!-- UIそのまま -->
+
+        <img class="img1" src="画像/1.png">
+        <img class="img2" src="画像/1（問）.png">
+
+        <div class="box">
+
+            <input type="text" id="display" readonly>
+            <p id="message"></p>
+
+            <div class="number-row">
+                <button onclick="inputValue('0')">0</button>
+                <button onclick="inputValue('1')">1</button>
+                <button onclick="inputValue('2')">2</button>
+                <button onclick="inputValue('3')">3</button>
+                <button onclick="inputValue('4')">4</button>
+                <button onclick="inputValue('5')">5</button>
+                <button onclick="inputValue('6')">6</button>
+                <button onclick="inputValue('7')">7</button>
+                <button onclick="inputValue('8')">8</button>
+                <button onclick="inputValue('9')">9</button>
+            </div>
+
+            <div class="action-row">
+                <button onclick="enterValue()">Enter</button>
+                <button onclick="deleteValue()">Delete</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== 光システム ===== -->
+    <div class="hikari-root">
+
+        <!-- 光① -->
+        <div class="hikari-light"
+             data-x="100"
+             data-y="768"
+             data-img1="画像/ITEM 電池.png"
+             data-img2="画像/電池.png">
+        </div>
+
     </div>
 
 </div>
 
+<!-- ===== viewer（画像表示） ===== -->
+<div class="hikari-viewer">
+  <div class="hikari-black"></div>
 
-<!-- UI -->
-<div class="container">
-    <img class="img1" src="画像/1.png">
-	 <img class="img2" src="画像/1（問）.png">
-    <div class="box">
+  <img class="hikari-img1">
+  <img class="hikari-img2">
 
-        <input type="text" id="display" readonly>
-		  <p id="message"></p>
-
-        <div class="number-row">
-            <button onclick="inputValue('0')">0</button>
-            <button onclick="inputValue('1')">1</button>
-            <button onclick="inputValue('2')">2</button>
-            <button onclick="inputValue('3')">3</button>
-            <button onclick="inputValue('4')">4</button>
-            <button onclick="inputValue('5')">5</button>
-            <button onclick="inputValue('6')">6</button>
-            <button onclick="inputValue('7')">7</button>
-            <button onclick="inputValue('8')">8</button>
-            <button onclick="inputValue('9')">9</button>
-        </div>
-
-        <div class="action-row">
-            <button onclick="enterValue()">Enter</button>
-            <button onclick="deleteValue()">Delete</button>
-        </div>
-
-    </div>
+  <button class="hikari-close">×</button>
 </div>
 
+<!-- ===== JS ===== -->
+
+<script src="../all.js"></script>
 <script src="1.js"></script>
+
 </body>
 </html>
