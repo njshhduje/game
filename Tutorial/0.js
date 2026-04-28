@@ -5,7 +5,7 @@ let userInput = "";
 // ===== ページ遷移 =====
 const routes = {
   "ゆい": "../1st/1.html",
-  "はるか": "secret.html",
+  "しずく": "../Happy/Happy.html",
   "てすと": "test.html"
 };
 
