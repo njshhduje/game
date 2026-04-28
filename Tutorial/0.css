@@ -80,10 +80,9 @@ input, button {
 }
 
 #testid {
-　　width: 80vw;
-   max-width: 600px;
-   min-width: 250px;
-   height: auto;
+　　width: 100vw;
+    height: 100vw;
+	 object-fit: contain;
 }
 
 /* ===== 入力欄 ===== */
